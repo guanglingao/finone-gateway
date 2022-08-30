@@ -1,0 +1,42 @@
+server:
+  port: 9090
+  shutdown: graceful
+spring:
+  application:
+    name: finone-gateway
+  jmx:
+    enabled: false
+  config:
+    import: optional:configserver:consul:127.0.0.1:8500
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+    consul:
+      host: 127.0.0.1
+      port: 8500
+      config:
+        enabled: true
+        format: yaml
+        data-key: data
+        prefixes: config
+        watch:
+          enabled: true
+          delay: 1000
+      discovery:
+        prefer-ip-address: true
+
+
+luobo: 1
+
+
+
+
+
+
+
+
+
+
